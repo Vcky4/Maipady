@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/login">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.maipady.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.maipady.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.maipady.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.maipady.ui.authentication.login.Login"
+        android:label="login"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_login_to_payment"
+            app:destination="@id/payment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/login"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sign_up"
+        android:name="com.example.maipady.ui.authentication.signup.Signup"
+        android:label="signUp"
+        tools:layout="@layout/signup_fragment"/>
+
+    <fragment
+        android:id="@+id/payment"
+        android:name="com.example.maipady.ui.authentication.Payment"
+        android:label="payment"
+        tools:layout="@layout/payment_fragment">
+        <action
+            android:id="@+id/action_payment_to_sign_up"
+            app:destination="@id/sign_up"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/payment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+</navigation>

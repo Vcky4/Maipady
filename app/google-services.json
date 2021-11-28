@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "136700468299",
+    "project_id": "maipady-976c0",
+    "storage_bucket": "maipady-976c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136700468299:android:1a2a9951377d770595c1ce",
+        "android_client_info": {
+          "package_name": "com.example.maipady"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136700468299-t5dpmnddag05sbqk2odh8cc90ihl69kj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrxT9sEUGIyfN_5CIo0IHAbedzXcF7Fik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136700468299-t5dpmnddag05sbqk2odh8cc90ihl69kj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

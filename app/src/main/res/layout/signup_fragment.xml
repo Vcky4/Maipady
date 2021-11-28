@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.authentication.signup.Signup"
+    tools:ignore="HardcodedText"
+    android:padding="40dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/content_layout"
+        android:text="Set Private Key"
+        android:textSize="30sp"
+        android:textColor="@color/blue_200" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="@id/content_layout"
+            android:padding="5dp"
+            android:text="Please set your personal private key of at least 6 digit then select a grading system"
+            android:textColor="@color/blue_200"
+            android:textSize="15sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/private_key_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/instructions"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxStrokeColor="@color/blue_200"
+            android:padding="5dp"
+            android:hint="Private key">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/private_key_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textCapCharacters"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/choose_grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            app:layout_constraintTop_toBottomOf="@id/private_key_text_layout"
+            android:padding="5dp"
+            android:text="Choose Grade System"
+            android:textColor="@color/blue_200"
+            android:textSize="15sp"/>
+
+
+        <RadioGroup
+           android:id="@+id/radio_group"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+          android:paddingHorizontal="5dp"
+           app:layout_constraintTop_toBottomOf="@id/choose_grade"
+           app:layout_constraintStart_toStartOf="parent">
+           <com.google.android.material.radiobutton.MaterialRadioButton
+               android:id="@+id/point_radio5"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="5 point"
+               android:checked="true"
+               android:textSize="15sp"/>
+           <com.google.android.material.radiobutton.MaterialRadioButton
+               android:id="@+id/point_radio4"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="4 point"
+               android:textSize="15sp"/>
+       </RadioGroup>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/register_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_group"
+            android:layout_marginHorizontal="80dp"
+            android:gravity="center"
+            android:text="Register"
+            android:layout_marginTop="20dp"
+            app:cornerRadius="15dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
