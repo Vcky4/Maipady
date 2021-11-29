@@ -54,6 +54,7 @@
             app:boxCornerRadiusBottomStart="20dp"
             app:boxStrokeColor="@color/blue_200"
             android:padding="5dp"
+            app:expandedHintEnabled="false"
             android:hint="card number">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_card_number"
@@ -83,6 +84,7 @@
             app:boxCornerRadiusBottomStart="20dp"
             app:boxStrokeColor="@color/blue_200"
             android:padding="5dp"
+            app:expandedHintEnabled="false"
             android:hint="Expiry">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_expiry"
@@ -109,6 +111,7 @@
             app:boxCornerRadiusBottomStart="20dp"
             app:boxStrokeColor="@color/blue_200"
             android:padding="5dp"
+            app:expandedHintEnabled="false"
             android:hint="CVV">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_cvv"

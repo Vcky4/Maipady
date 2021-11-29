@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import co.paystack.android.Paystack
 import co.paystack.android.PaystackSdk
@@ -32,6 +33,7 @@ class Payment : Fragment() {
     private var charge: Charge? = null
     private lateinit var binding: PaymentFragmentBinding
     private lateinit var auth: FirebaseAuth
+    private val authSharedViewModel: AuthSharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -115,7 +117,15 @@ class Payment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable) {
-
+                val s1 = binding.etCardNumber.text.toString()
+                val s2 = binding.etExpiry.text.toString()
+                val s3 = binding.etCvv.text.toString()
+                if (s1.length == 16){
+                    binding.etExpiry.requestFocus()
+                }
+                if (s2.length == 5){
+                    binding.etCvv.requestFocus()
+                }
             }
         }
 
@@ -163,7 +173,9 @@ class Payment : Fragment() {
         charge!!.card = loadCardFromForm()
 
         charge!!.amount = 30000
-        charge!!.email = "okon.victor.u@gmail.com"
+        authSharedViewModel.email.observe(viewLifecycleOwner,{
+            charge!!.email = it
+        })
         charge!!.reference = "payment" + Calendar.getInstance().timeInMillis
 
         try {

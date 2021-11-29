@@ -8,17 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import co.paystack.android.PaystackSdk
 import com.example.maipady.R
 import com.example.maipady.databinding.SignupFragmentBinding
+import com.example.maipady.ui.authentication.AuthSharedViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class Signup : Fragment() {
 
     private lateinit var binding: SignupFragmentBinding
     private lateinit var auth: FirebaseAuth
+    private val authSharedViewModel: AuthSharedViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -36,7 +40,11 @@ class Signup : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.registerButton.setOnClickListener {
-
+            authSharedViewModel.email.observe(viewLifecycleOwner, { email ->
+                authSharedViewModel.regNo.observe(viewLifecycleOwner, { regNo ->
+                    register(email, regNo)
+                })
+            })
         }
     }
 
@@ -55,5 +63,11 @@ class Signup : Fragment() {
         }
     }
 
-
+//    private fun radioButtonValue() {
+//        if (binding.pointRadio5.isChecked){
+//            radioButtonValue() => 5
+//        }else if (binding.pointRadio4.isChecked){
+//            return 4
+//        }
+//    }
 }
