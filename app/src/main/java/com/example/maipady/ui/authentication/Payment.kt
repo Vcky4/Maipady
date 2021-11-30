@@ -105,10 +105,10 @@ class Payment : Fragment() {
                 if (s2.length == 2) {
                     if (start == 2 && before == 1 && !s2.contains("/")) {
                         binding.etExpiry.setText(getString(R.string.expiry_space, s2[0]))
-
                         binding.etExpiry.setSelection(1)
                     } else {
-                        binding.etExpiry.setText(getString(R.string.expiry_slash, s2))
+                        binding.etExpiry.append("/")
+//                        binding.etExpiry.setText(getString(R.string.expiry_slash, s2))
                         binding.etExpiry.setSelection(3)
                     }
                 }
@@ -117,12 +117,7 @@ class Payment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable) {
-                val s1 = binding.etCardNumber.text.toString()
                 val s2 = binding.etExpiry.text.toString()
-                val s3 = binding.etCvv.text.toString()
-                if (s1.length == 16){
-                    binding.etExpiry.requestFocus()
-                }
                 if (s2.length == 5){
                     binding.etCvv.requestFocus()
                 }

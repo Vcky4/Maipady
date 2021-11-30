@@ -72,6 +72,17 @@
             android:layout_marginTop="30dp"
             app:cornerRadius="15dp"/>
 
+    <ProgressBar
+        android:id="@+id/loading_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/register_layout" />
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/register_layout"
         android:layout_width="match_parent"

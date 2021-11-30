@@ -33,7 +33,7 @@
             android:gravity="center"
             app:layout_constraintTop_toTopOf="@id/content_layout"
             android:padding="5dp"
-            android:text="Please set your personal private key of at least 6 digit then select a grading system"
+            android:text="Please set your personal private key of at least 8 characters then select a grading system"
             android:textColor="@color/blue_200"
             android:textSize="15sp"/>
 
@@ -49,12 +49,13 @@
             app:boxCornerRadiusBottomStart="20dp"
             app:boxStrokeColor="@color/blue_200"
             android:padding="5dp"
+            app:passwordToggleEnabled="true"
             android:hint="Private key">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/private_key_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textCapCharacters"/>
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textview.MaterialTextView
@@ -94,16 +95,26 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/register_button"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/radio_group"
-            android:layout_marginHorizontal="80dp"
+            android:paddingHorizontal="20dp"
             android:gravity="center"
             android:text="Register"
             android:layout_marginTop="20dp"
             app:cornerRadius="15dp"/>
+
+        <ProgressBar
+            android:id="@+id/loading_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_group"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
