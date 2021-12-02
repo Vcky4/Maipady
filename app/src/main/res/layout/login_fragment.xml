@@ -69,6 +69,7 @@
             android:layout_marginHorizontal="80dp"
             android:gravity="center"
             android:text="GO!"
+            android:enabled="false"
             android:layout_marginTop="30dp"
             app:cornerRadius="15dp"/>
 

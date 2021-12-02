@@ -51,7 +51,6 @@ class Login : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.goButton.isEnabled = false
 
         //initiate text watchers
         textWatchers()

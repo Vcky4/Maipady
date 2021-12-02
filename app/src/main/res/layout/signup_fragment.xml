@@ -103,6 +103,7 @@
             android:paddingHorizontal="20dp"
             android:gravity="center"
             android:text="Register"
+            android:enabled="false"
             android:layout_marginTop="20dp"
             app:cornerRadius="15dp"/>
 
@@ -110,7 +111,7 @@
             android:id="@+id/loading_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
