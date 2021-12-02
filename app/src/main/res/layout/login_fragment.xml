@@ -17,7 +17,7 @@
             app:layout_constraintBottom_toTopOf="@id/email_text_layout"
             android:text="Welcome Back"
             android:textSize="30sp"
-            android:textColor="@color/blue_200" />
+            android:textColor="@color/black" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_text_layout"
@@ -30,7 +30,7 @@
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
             app:boxCornerRadiusBottomStart="20dp"
-            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeColor="@color/colorPrimary"
             android:padding="5dp"
             android:hint="Email">
             <com.google.android.material.textfield.TextInputEditText
@@ -49,7 +49,7 @@
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
             app:boxCornerRadiusBottomStart="20dp"
-            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeColor="@color/colorPrimary"
             android:padding="5dp"
             android:hint="Reg No.:">
             <com.google.android.material.textfield.TextInputEditText

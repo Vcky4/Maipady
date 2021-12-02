@@ -52,7 +52,7 @@
             app:layout_constraintBottom_toTopOf="@id/btn_pay"
             app:boxCornerRadiusTopStart="20dp"
             app:boxCornerRadiusBottomStart="20dp"
-            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeColor="@color/colorPrimary"
             android:padding="5dp"
             app:expandedHintEnabled="false"
             android:hint="card number">
@@ -82,7 +82,7 @@
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
             app:boxCornerRadiusBottomStart="20dp"
-            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeColor="@color/colorPrimary"
             android:padding="5dp"
             app:expandedHintEnabled="false"
             android:hint="Expiry">
@@ -109,7 +109,7 @@
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
             app:boxCornerRadiusBottomStart="20dp"
-            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeColor="@color/colorPrimary"
             android:padding="5dp"
             app:expandedHintEnabled="false"
             android:hint="CVV">

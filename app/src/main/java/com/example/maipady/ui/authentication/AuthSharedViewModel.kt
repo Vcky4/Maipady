@@ -1,5 +1,7 @@
 package com.example.maipady.ui.authentication
 
+import android.R.attr
+import android.util.Log
 import androidx.lifecycle.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -8,6 +10,18 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import com.google.firebase.database.DatabaseError
+
+import androidx.annotation.NonNull
+
+import android.R.attr.data
+
+import com.google.firebase.database.DataSnapshot
+
+import com.google.firebase.database.ValueEventListener
+
+
+
 
 class AuthSharedViewModel: ViewModel() {
     private val _email = MutableLiveData<String>()
@@ -47,9 +61,47 @@ class AuthSharedViewModel: ViewModel() {
         database.child(userId).child("RegNo").setValue(regNo)
         database.child(userId).child("privateKey").setValue(privateKey)
         database.child(userId).child("GradeSystem").setValue(gradeSystem)
+        database.child(userId).child("email").setValue(email)
         database.child(userId).child("Results")
     }
 
+    fun getUser(userId: String){
+        //get reg no.
+        database.child(userId).child("RegNo")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    regNoValue(dataSnapshot.child("value").value.toString())
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {}
+            })
+        //get email
+        database.child(userId).child("email")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    emailValue(dataSnapshot.child("value").value.toString())
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {}
+            })
+        //get private key
+        database.child(userId).child("privateKey")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    privateKeyValue(dataSnapshot.child("value").value.toString())
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {}
+            })
+        database.child(userId).child("GradeSystem")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    gradeSystemValue(dataSnapshot.child("value").value.toString())
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {}
+            })
 
 
+    }
 }

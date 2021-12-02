@@ -70,6 +70,7 @@ class Login : Fragment() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
+            authSharedViewModel.getUser(currentUser.uid)
             findNavController().navigate(R.id.action_login_to_nav_home)
         }
     }

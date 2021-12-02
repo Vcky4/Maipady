@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toTopOf="@id/content_layout"
         android:text="Set Private Key"
         android:textSize="30sp"
-        android:textColor="@color/blue_200" />
+        android:textColor="@color/black" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content_layout"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="@id/content_layout"
             android:padding="5dp"
             android:text="Please set your personal private key of at least 8 characters then select a grading system"
-            android:textColor="@color/blue_200"
+            android:textColor="@color/black"
             android:textSize="15sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -47,7 +47,7 @@
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
             app:boxCornerRadiusBottomStart="20dp"
-            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeColor="@color/colorPrimary"
             android:padding="5dp"
             app:passwordToggleEnabled="true"
             android:hint="Private key">
@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@id/private_key_text_layout"
             android:padding="5dp"
             android:text="Choose Grade System"
-            android:textColor="@color/blue_200"
+            android:textColor="@color/black"
             android:textSize="15sp"/>
 
 
@@ -110,7 +110,7 @@
             android:id="@+id/loading_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
