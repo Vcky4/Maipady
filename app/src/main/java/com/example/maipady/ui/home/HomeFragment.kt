@@ -18,9 +18,7 @@ var animationPlaybackSpeed: Double = 0.8
 class HomeFragment : Fragment() {
 
 
-//    private val recyclerView: RecyclerView by bindView(R.id.recycler_view)
-//    private val appbar: AppBarLayout by bindView(R.id.appbar)
-//    private val drawerIcon: View by bindView(R.id.drawer_icon)
+
 //    private val filtersLayout: FiltersLayout by bindView(R.id.filters_layout)
 //    private val filtersMotionLayout: FiltersMotionLayout by bindView(R.id.filters_motion_layout)
 
@@ -37,15 +35,17 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-        })
-        return root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val recyclerView = binding.recyclerView
+        val appbar = binding.appbar
+        val drawerIcon = binding.drawerIcon
+
     }
 
     override fun onDestroyView() {

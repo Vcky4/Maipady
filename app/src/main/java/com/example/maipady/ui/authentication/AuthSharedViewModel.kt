@@ -101,7 +101,18 @@ class AuthSharedViewModel: ViewModel() {
 
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
+    }
+    private val _amount = MutableLiveData<String>()
+    val amount: LiveData<String> = _amount
+    fun getAmount(){
+        database.child("amount")
+            .addValueEventListener(object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    _amount.value = snapshot.child("value").value.toString()
+                }
 
-
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
     }
 }

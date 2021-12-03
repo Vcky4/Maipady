@@ -56,9 +56,10 @@ class Payment : Fragment() {
         addTextWatcherToEditText()
 
         //set the amount to pay in the button, this could be dynamic, that is why it wasn't added in the activity layout
-        val totalPrice = "₦300"
-        binding.btnPay.text = "pay $totalPrice"
-
+        authSharedViewModel.getAmount()
+        authSharedViewModel.amount.observe(viewLifecycleOwner,{
+            binding.btnPay.text = "pay ₦$it"
+        })
         //handle clicks here
         handleClicks()
 
@@ -166,8 +167,10 @@ class Payment : Fragment() {
         // initialize the charge
         charge = Charge()
         charge!!.card = loadCardFromForm()
-
-        charge!!.amount = 30000
+        authSharedViewModel.amount.observe(viewLifecycleOwner,{
+            val amount = it.toInt().times(100)
+            charge!!.amount = amount
+        })
         authSharedViewModel.email.observe(viewLifecycleOwner,{
             charge!!.email = it
         })
