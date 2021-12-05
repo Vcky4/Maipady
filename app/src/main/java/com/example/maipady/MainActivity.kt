@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_UNLOCKED
 import androidx.lifecycle.ViewModelProvider
@@ -77,6 +78,10 @@ class MainActivity : AppCompatActivity() {
             navView.getHeaderView(0).findViewById<TextView>(R.id.user_email).text = it
         })
 
+    }
+
+    fun openDrawer(){
+        binding.drawerLayout.openDrawer(GravityCompat.START)
     }
 
     private fun logoutDialog() {

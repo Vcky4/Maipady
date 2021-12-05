@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.maipady.MainActivity
 import com.example.maipady.R
 import com.example.maipady.databinding.FragmentHomeBinding
 import com.google.android.material.appbar.AppBarLayout
@@ -45,6 +46,10 @@ class HomeFragment : Fragment() {
         val recyclerView = binding.recyclerView
         val appbar = binding.appbar
         val drawerIcon = binding.drawerIcon
+
+        drawerIcon.setOnClickListener {
+            (activity as MainActivity).openDrawer()
+        }
 
     }
 
