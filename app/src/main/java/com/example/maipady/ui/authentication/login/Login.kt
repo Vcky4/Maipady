@@ -100,6 +100,7 @@ class Login : Fragment() {
     }
 
     private fun checkEmailExistsOrNot(email: String, regNo: String) {
+
         auth.fetchSignInMethodsForEmail(email).addOnCompleteListener { task ->
             Log.d(TAG, "" + (task.result?.signInMethods?.size ?: 0))
             if (task.result?.signInMethods?.size == 0) {
@@ -119,6 +120,7 @@ class Login : Fragment() {
 
     private fun handleClicks() {
 
+
         //on click of pay button
         binding.goButton.setOnClickListener {
 
@@ -128,6 +130,7 @@ class Login : Fragment() {
                 //show loading
                 binding.loadingUser.visibility = VISIBLE
                 binding.goButton.isEnabled = false
+
 
                 //save to viewModel
                 authSharedViewModel.emailValue(binding.emailText.text.toString())

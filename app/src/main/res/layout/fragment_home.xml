@@ -9,7 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="HardcodedText">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/coordinator_layout"
@@ -24,7 +25,7 @@
                 android:theme="@style/Theme.Maipady.AppBarOverlay"
                 app:elevation="0dp">
 
-                <FrameLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/appbar_container"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize">
@@ -35,17 +36,47 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:padding="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_drawer_icon"
                         app:tint="@color/toolbar_title_color" />
-
-                    <View
+                    <LinearLayout
                         android:id="@+id/toolbar_title"
-                        android:layout_width="140dp"
-                        android:layout_height="14dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ic_pill"
-                        android:backgroundTint="@color/toolbar_title_color" />
-                </FrameLayout>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toEndOf="@id/drawer_icon"
+                        app:layout_constraintEnd_toStartOf="@id/eye_hide"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:ignore="HardcodedText" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="30sp"
+                            android:text="CGPA: "
+                           />
+                        <TextView
+                            android:id="@+id/cgpa_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="30sp"
+                            android:paddingHorizontal="10dp"
+                            android:text="_.__"/>
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/eye_hide"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginHorizontal="30dp"
+                        android:src="@drawable/ic_baseline_remove_red_eye_24"
+                        android:background="@color/colorPrimary"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.appbar.AppBarLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -60,14 +91,39 @@
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_margin="20dp"
-            android:src="@drawable/ic_baseline_add_circle_24"
-            android:backgroundTintMode="src_in"
-            app:maxImageSize="60dp" />
+            android:src="@drawable/ic_sharp_add_24"
+            app:tint="@color/white"
+            app:fabSize="normal"
+            app:maxImageSize="40dp" />
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_baseline_cloud_upload_24"
+            android:text="upload pdf"
+            app:iconTint="@color/white"
+            android:textColor="@color/white"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/fab_add"/>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_baseline_create_24"
+            android:text="add result"
+            android:layout_marginEnd="20dp"
+            app:iconTint="@color/white"
+            android:textColor="@color/white"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/fab_upload"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

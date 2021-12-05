@@ -108,7 +108,7 @@ class AuthSharedViewModel: ViewModel() {
         database.child("amount")
             .addValueEventListener(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    _amount.value = snapshot.child("value").value.toString()
+                    _amount.value = snapshot.value.toString()
                 }
 
                 override fun onCancelled(error: DatabaseError) {

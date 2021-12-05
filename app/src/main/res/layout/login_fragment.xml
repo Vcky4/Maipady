@@ -123,7 +123,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="50dp"
             android:gravity="center"
-            android:text="pay #300 to proceed"
+            android:text="pay to proceed"
             android:layout_marginTop="20dp"
             app:cornerRadius="15dp"/>
 
