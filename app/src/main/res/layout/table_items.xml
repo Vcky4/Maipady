@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText" >
+
+
+    <TextView
+        android:id="@+id/sN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text= "1"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:paddingTop="10dp"
+        android:paddingHorizontal="10dp"
+        />
+    <EditText
+        android:id="@+id/courses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/sN"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/grades"
+        android:text="GRE111"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:enabled="false"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="5dp"
+        android:paddingHorizontal="20dp"
+        />
+    <EditText
+        android:id="@+id/grades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/courses"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cH"
+        android:text="A"
+        android:gravity="center"
+        android:enabled="false"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:paddingHorizontal="10dp"
+        />
+    <EditText
+        android:id="@+id/cH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/grades"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="1"
+        android:gravity="end"
+        android:enabled="false"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:paddingHorizontal="10dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

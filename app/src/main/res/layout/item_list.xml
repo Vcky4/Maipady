@@ -41,15 +41,14 @@
                 android:transformPivotX="0dp"
                 tools:ignore="HardcodedText">
 
-                <ImageView
+                <Button
                     android:id="@+id/chevron"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/semester"
-                    android:layout_alignBottom="@+id/gpa"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
-                    app:srcCompat="@drawable/ic_chevron_right"
-                    app:tint="@color/title_color" />
+                    android:gravity="center_vertical"
+                    android:background="@drawable/ic_chevron_right"
+                    />
 
                 <TextView
                     android:id="@+id/semester"
@@ -94,9 +93,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/gpa_text"
-                    android:layout_alignStart="@id/semester"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
                     android:orientation="vertical"
                     tools:ignore="HardcodedText"
                     android:visibility="gone">
@@ -130,46 +129,73 @@
                         android:id="@+id/save_bt"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:enabled="false"
-                        android:background="@drawable/ic_baseline_save_24"
+                        android:background="@drawable/ic_baseline_create_24"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
-                    <TableLayout
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/table_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@id/button_layout"
-                        android:stretchColumns="@string/pstck_pinpad__num_4"
-                        >
-                        <TableRow
-                            android:layout_width="match_parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/button_layout">
+
+                        <TextView
+                            android:id="@+id/sn"
+                            android:text="S/N"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_horizontal">
-                            <TextView
-                                android:text="S/N"
-                                android:layout_column="1"
-                                android:gravity="center"
-                                android:paddingHorizontal="20dp"
-                                />
-                            <TextView
-                                android:text="Courses"
-                                android:layout_column="2"
-                                android:gravity="center"
-                                android:paddingHorizontal="20dp"
-                                />
-                            <TextView
-                                android:text="Grades"
-                                android:layout_column="3"
-                                android:gravity="center"
-                                android:paddingHorizontal="15dp"
-                                />
-                            <TextView
-                                android:text="CH"
-                                android:layout_column="4"
-                                android:gravity="center"
-                                android:paddingHorizontal="10dp"/>
-                        </TableRow>
-                    </TableLayout>
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            />
+                        <TextView
+                            android:id="@+id/courses"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toEndOf="@id/sn"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/gd"
+                            android:text="Courses"
+                            android:gravity="center"
+                            android:paddingHorizontal="20dp"
+                            />
+                        <TextView
+                            android:id="@+id/gd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toEndOf="@id/courses"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/ch"
+                            android:text="Grades"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            />
+                        <TextView
+                            android:id="@+id/ch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toEndOf="@id/gd"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:text="CH"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/table_layout"
+                        app:layout_constraintEnd_toEndOf="@id/table_layout"
+                        app:layout_constraintTop_toBottomOf="@id/table_layout"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                        tools:listitem="@layout/table_items" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

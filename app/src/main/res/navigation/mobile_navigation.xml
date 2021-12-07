@@ -75,4 +75,9 @@
         app:popUpToInclusive="true"
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
         app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    <fragment
+        android:id="@+id/nav_past_questions"
+        android:name="com.example.maipady.ui.pastquestion.PastQuestion"
+        android:label="@string/past_questions"
+        tools:layout="@layout/past_question_fragment"/>
 </navigation>

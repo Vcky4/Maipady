@@ -2,4 +2,5 @@
 <resources>
     <string name="expiry_slash">/</string>
     <string name="logout">Logout</string>
+    <string name="past_questions">Past Questions</string>
 </resources>

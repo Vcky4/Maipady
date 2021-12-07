@@ -14,14 +14,16 @@
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.15" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.12817028985507245" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.13360507246376813" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_list.xml" value="0.15918367346938775" />
+        <entry key="app/src/main/res/layout/item_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/login_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/past_question_fragment.xml" value="0.16576086956521738" />
         <entry key="app/src/main/res/layout/payment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/payment_fragment.xml" value="0.26141078838174275" />
         <entry key="app/src/main/res/layout/signup_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/table_items.xml" value="0.22" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
         <entry key="app/src/main/res/menu/main.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/xml/root_preferences.xml" value="0.22" />
