@@ -14,7 +14,8 @@ import com.example.maipady.models.Results
 import com.example.maipady.models.TableItems
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
-class ResultsAdapter(val activity: FragmentActivity?) : RecyclerView.Adapter<ResultsAdapter.RankingViewHolder>() {
+class ResultsAdapter(val activity: FragmentActivity?) :
+    RecyclerView.Adapter<ResultsAdapter.RankingViewHolder>() {
 
     private val result = mutableListOf<Results>()
 
@@ -22,31 +23,29 @@ class ResultsAdapter(val activity: FragmentActivity?) : RecyclerView.Adapter<Res
         RecyclerView.ViewHolder(binding.root) {
         fun bindItems(items: Results) {
             binding.semester.text = items.semester
-            binding.level.text = items.level+"level"
+            binding.level.text = items.level + "level"
             binding.gpaText.text = items.gpa
 
 
             val adapter = TableAdapter()
             binding.recy.layoutManager = LinearLayoutManager(activity)
             binding.recy.adapter = adapter
-            adapter.setUpRanks(DummyData.results)
+            adapter.setUpRanks(items.details)
         }
 
         val drawable = binding.chevron
 
         // function to expand view when chevron button is clicked
-        fun expand(){
-            binding.chevron.setOnClickListener {
-                if(binding.expandView.visibility == GONE){
-                    binding.expandView.visibility = VISIBLE
-                    binding.chevron.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
-                }else{
-                    binding.expandView.visibility = GONE
-                    binding.chevron.setBackgroundResource(R.drawable.ic_chevron_right)
-                }
+        fun expand() {
+            if (binding.expandView.visibility == GONE) {
+                binding.expandView.visibility = VISIBLE
+                binding.chevron.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
+            } else {
+                binding.expandView.visibility = GONE
+                binding.chevron.setBackgroundResource(R.drawable.ic_chevron_right)
             }
-        }
 
+        }
 
 
     }
@@ -73,6 +72,7 @@ class ResultsAdapter(val activity: FragmentActivity?) : RecyclerView.Adapter<Res
             onItemClickListener?.let { it(item) }
         }
     }
+
     private var onItemClickListener: ((Results) -> Unit)? = null
     fun setOnItemClickListener(listener: (Results) -> Unit) {
         onItemClickListener = listener
