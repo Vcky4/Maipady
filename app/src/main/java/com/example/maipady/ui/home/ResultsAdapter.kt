@@ -13,6 +13,7 @@ import com.example.maipady.models.DummyData
 import com.example.maipady.models.Results
 import com.example.maipady.models.TableItems
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import java.util.stream.IntStream.range
 
 class ResultsAdapter(val activity: FragmentActivity?) :
     RecyclerView.Adapter<ResultsAdapter.RankingViewHolder>() {
@@ -34,6 +35,7 @@ class ResultsAdapter(val activity: FragmentActivity?) :
         }
 
         val drawable = binding.chevron
+        val gpa = binding.gpaText
 
         // function to expand view when chevron button is clicked
         fun expand() {
@@ -66,7 +68,6 @@ class ResultsAdapter(val activity: FragmentActivity?) :
     override fun onBindViewHolder(holder: RankingViewHolder, position: Int) {
         val item = result[position]
         holder.bindItems(item)
-
         holder.drawable.setOnClickListener {
             holder.expand()
             onItemClickListener?.let { it(item) }

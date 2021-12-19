@@ -48,6 +48,7 @@
         android:textAllCaps="true"
         android:textSize="12sp"
         android:textColor="@color/black"
+        android:layout_marginStart="5dp"
         android:paddingHorizontal="5dp"
         />
     <EditText
@@ -56,6 +57,20 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/grades"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/qP"
+        android:text="1"
+        android:gravity="center"
+        android:enabled="false"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:paddingHorizontal="5dp"/>
+    <EditText
+        android:id="@+id/qP"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/cH"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="1"
         android:gravity="end"
@@ -63,6 +78,7 @@
         android:textSize="12sp"
         android:textColor="@color/black"
         android:paddingHorizontal="5dp"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

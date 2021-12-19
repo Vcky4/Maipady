@@ -93,19 +93,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/gpa_text"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginStart="16dp"
                     android:orientation="vertical"
-                    tools:ignore="HardcodedText"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:ignore="HardcodedText">
+
                     <LinearLayout
                         android:id="@+id/button_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <Button
@@ -113,89 +114,145 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginHorizontal="5dp"
-                            android:enabled="false"
-                            android:background="@drawable/ic_baseline_undo_24"/>
+                            android:background="@drawable/ic_baseline_undo_24"
+                            android:enabled="false" />
 
                         <Button
                             android:id="@+id/redo_bt"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginHorizontal="5dp"
-                            android:enabled="false"
-                            android:background="@drawable/ic_baseline_redo_24"/>
+                            android:background="@drawable/ic_baseline_redo_24"
+                            android:enabled="false" />
 
                     </LinearLayout>
+
                     <Button
                         android:id="@+id/save_bt"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:background="@drawable/ic_baseline_create_24"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/table_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/button_layout">
 
                         <TextView
                             android:id="@+id/sn"
-                            android:text="S/N"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
                             android:gravity="center"
                             android:paddingHorizontal="10dp"
-                            />
+                            android:text="S/N"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:id="@+id/courses"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintStart_toEndOf="@id/sn"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/gd"
-                            android:text="Courses"
                             android:gravity="center"
                             android:paddingHorizontal="20dp"
-                            />
+                            android:text="Courses"
+                            app:layout_constraintEnd_toStartOf="@id/gd"
+                            app:layout_constraintStart_toEndOf="@id/sn"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:id="@+id/gd"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintStart_toEndOf="@id/courses"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/ch"
-                            android:text="Grades"
                             android:gravity="center"
                             android:paddingHorizontal="10dp"
-                            />
+                            android:text="Grades"
+                            app:layout_constraintEnd_toStartOf="@id/ch"
+                            app:layout_constraintStart_toEndOf="@id/courses"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:id="@+id/ch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintStart_toEndOf="@id/gd"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            android:text="CH"
                             android:gravity="center"
-                            android:paddingHorizontal="10dp"/>
+                            android:paddingHorizontal="10dp"
+                            android:text="CH"
+                            app:layout_constraintEnd_toStartOf="@id/qp"
+                            app:layout_constraintStart_toEndOf="@id/gd"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/qp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:text="QP"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/ch"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/courses"
+                            tools:listitem="@layout/table_items" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="10dp"
+                            android:text="total"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="@id/courses"
+                            app:layout_constraintStart_toStartOf="@id/courses"
+                            app:layout_constraintTop_toBottomOf="@id/recy" />
+
+                        <TextView
+                            android:id="@+id/qp_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="10dp"
+                            android:text="0"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="@id/qp"
+                            app:layout_constraintStart_toStartOf="@id/qp"
+                            app:layout_constraintTop_toBottomOf="@id/recy" />
+
+                        <TextView
+                            android:id="@+id/ch_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="10dp"
+                            android:text="0"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="@id/ch"
+                            app:layout_constraintStart_toStartOf="@id/ch"
+                            app:layout_constraintTop_toBottomOf="@id/recy" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recy"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="@id/table_layout"
-                        app:layout_constraintEnd_toEndOf="@id/table_layout"
-                        app:layout_constraintTop_toBottomOf="@id/table_layout"
-                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                        tools:listitem="@layout/table_items" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
