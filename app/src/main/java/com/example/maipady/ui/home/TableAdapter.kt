@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.maipady.databinding.TableItemsBinding
 import com.example.maipady.models.TableItems
+import java.util.*
 
 class TableAdapter : RecyclerView.Adapter<TableAdapter.RankingViewHolder>() {
 
@@ -17,6 +18,29 @@ class TableAdapter : RecyclerView.Adapter<TableAdapter.RankingViewHolder>() {
             binding.courses.setText(items.courses)
             binding.grades.setText(items.grades)
             binding.cH.setText(items.cH)
+
+            when {
+                items.grades.uppercase(Locale.getDefault())  == "A" -> {
+                    items.qp = items.cH.toInt().times(5).toString()
+//                    binding.qP.setText(items.cH.toInt().times(5).toString())
+                }
+                items.grades.uppercase(Locale.getDefault())  == "B" -> {
+                    items.qp = items.cH.toInt().times(4).toString()
+                }
+                items.grades.uppercase(Locale.getDefault()) == "C" -> {
+                    items.qp = items.cH.toInt().times(3).toString()
+                }
+                items.grades.uppercase(Locale.getDefault())  == "D" -> {
+                    items.qp = items.cH.toInt().times(2).toString()
+                }
+                items.grades.uppercase(Locale.getDefault())  == "E" -> {
+                    items.qp = items.cH.toInt().times(1).toString()
+                }
+                items.grades.uppercase(Locale.getDefault())  == "F" -> {
+                    items.qp = items.cH.toInt().times(0).toString()
+                }
+            }
+            binding.qP.setText(items.qp)
         }
 
 
@@ -35,6 +59,8 @@ class TableAdapter : RecyclerView.Adapter<TableAdapter.RankingViewHolder>() {
     fun setUpRanks(items: List<TableItems>) {
         this.items.addAll(items)
     }
+
+    val resultSize = items.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RankingViewHolder {
         return RankingViewHolder(

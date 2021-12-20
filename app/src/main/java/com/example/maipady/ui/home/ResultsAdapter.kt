@@ -22,13 +22,28 @@ class ResultsAdapter(val activity: FragmentActivity?) :
 
     inner class RankingViewHolder(private val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private val adapter = TableAdapter()
         fun bindItems(items: Results) {
+
+
             binding.semester.text = items.semester
             binding.level.text = items.level + "level"
             binding.gpaText.text = items.gpa
 
+            var totalCh = 0
+            var totalQp = 0
 
-            val adapter = TableAdapter()
+
+            items.details.forEach {
+                totalCh = totalCh.plus(it.cH.toInt())
+                binding.chTotal.text = totalCh.toString()
+
+                if (it.grades == "A"){
+                    binding.qp.text = it.cH.toInt().times(5).toString()
+                }
+            }
+
+
             binding.recy.layoutManager = LinearLayoutManager(activity)
             binding.recy.adapter = adapter
             adapter.setUpRanks(items.details)
@@ -36,6 +51,7 @@ class ResultsAdapter(val activity: FragmentActivity?) :
 
         val drawable = binding.chevron
         val gpa = binding.gpaText
+        val totalCh =   binding.chTotal
 
         // function to expand view when chevron button is clicked
         fun expand() {
@@ -50,10 +66,23 @@ class ResultsAdapter(val activity: FragmentActivity?) :
         }
 
 
+
     }
 
     fun setUpRanks(items: List<Results>) {
         this.result.addAll(items)
+    }
+
+    fun calculate(){
+        val _results = result[1]
+        var totalCh = 0
+        var totalQp = 0
+        for (i in 1.._results.details.size){
+            val _items: TableItems = _results.details[i]
+            totalCh = totalCh.plus(_items.cH.toInt())
+            totalQp = totalQp.plus(_items.qp.toInt())
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RankingViewHolder {
@@ -72,6 +101,18 @@ class ResultsAdapter(val activity: FragmentActivity?) :
             holder.expand()
             onItemClickListener?.let { it(item) }
         }
+
+
+
+
+
+
+//        for (i in item.details.size){
+//            val _items: TableItems = item.details[i]
+//            totalCh = totalCh.plus(_items.cH.toInt())
+////            totalQp = totalQp.plus(_items.qp.toInt())
+//            holder.totalCh.text = totalCh.toString()
+//        }
     }
 
     private var onItemClickListener: ((Results) -> Unit)? = null
