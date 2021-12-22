@@ -38,9 +38,7 @@ class ResultsAdapter(val activity: FragmentActivity?) :
                 totalCh = totalCh.plus(it.cH.toInt())
                 binding.chTotal.text = totalCh.toString()
 
-                if (it.grades == "A"){
-                    binding.qp.text = it.cH.toInt().times(5).toString()
-                }
+                binding.qpTotal.text = adapter.totalQp().toString()
             }
 
 
