@@ -12,6 +12,7 @@ import com.example.maipady.R
 import com.example.maipady.databinding.ItemListBinding
 import com.example.maipady.models.Results
 import com.example.maipady.models.TableItems
+import java.math.RoundingMode
 import java.util.*
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
@@ -65,7 +66,7 @@ class ResultsAdapter(val activity: FragmentActivity?) :
                         binding.qpTotal.text = totalQp.toString()
                     }
                 }
-                items.gpa = totalQp.toDouble().div(totalCh.toDouble()).toString()
+                items.gpa = totalQp.toFloat().div(totalCh.toFloat()).toBigDecimal().setScale(2,RoundingMode.HALF_EVEN).toString()
                 binding.gpaText.text = items.gpa
             }
 
