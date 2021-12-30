@@ -4,16 +4,17 @@ import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.util.rangeTo
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.maipady.R
 import com.example.maipady.databinding.ItemListBinding
-import com.example.maipady.models.DummyData
 import com.example.maipady.models.Results
 import com.example.maipady.models.TableItems
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import java.util.stream.IntStream.range
+import java.util.*
+import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
 class ResultsAdapter(val activity: FragmentActivity?) :
     RecyclerView.Adapter<ResultsAdapter.RankingViewHolder>() {
@@ -28,7 +29,6 @@ class ResultsAdapter(val activity: FragmentActivity?) :
 
             binding.semester.text = items.semester
             binding.level.text = items.level + "level"
-            binding.gpaText.text = items.gpa
 
             var totalCh = 0
             var totalQp = 0
@@ -38,9 +38,36 @@ class ResultsAdapter(val activity: FragmentActivity?) :
                 totalCh = totalCh.plus(it.cH.toInt())
                 binding.chTotal.text = totalCh.toString()
 
-                binding.qpTotal.text = adapter.totalQp().toString()
+                when {
+                    it.grades.uppercase(Locale.getDefault()) == "A" -> {
+                        totalQp = totalQp.plus(it.cH.toInt().times(5))
+                        binding.qpTotal.text = totalQp.toString()
+//                    binding.qP.setText(items.cH.toInt().times(5).toString())
+                    }
+                    it.grades.uppercase(Locale.getDefault()) == "B" -> {
+                        totalQp = totalQp.plus(it.cH.toInt().times(4))
+                        binding.qpTotal.text = totalQp.toString()
+                    }
+                    it.grades.uppercase(Locale.getDefault()) == "C" -> {
+                        totalQp = totalQp.plus(it.cH.toInt().times(3))
+                        binding.qpTotal.text = totalQp.toString()
+                    }
+                    it.grades.uppercase(Locale.getDefault()) == "D" -> {
+                        totalQp = totalQp.plus(it.cH.toInt().times(2))
+                        binding.qpTotal.text = totalQp.toString()
+                    }
+                    it.grades.uppercase(Locale.getDefault()) == "E" -> {
+                        totalQp = totalQp.plus(it.cH.toInt().times(1))
+                        binding.qpTotal.text = totalQp.toString()
+                    }
+                    it.grades.uppercase(Locale.getDefault()) == "F" -> {
+                        totalQp = totalQp.plus(it.cH.toInt().times(0))
+                        binding.qpTotal.text = totalQp.toString()
+                    }
+                }
+                items.gpa = totalQp.toDouble().div(totalCh.toDouble()).toString()
+                binding.gpaText.text = items.gpa
             }
-
 
             binding.recy.layoutManager = LinearLayoutManager(activity)
             binding.recy.adapter = adapter
@@ -49,7 +76,7 @@ class ResultsAdapter(val activity: FragmentActivity?) :
 
         val drawable = binding.chevron
         val gpa = binding.gpaText
-        val totalCh =   binding.chTotal
+        val totalCh = binding.chTotal
 
         // function to expand view when chevron button is clicked
         fun expand() {
@@ -64,18 +91,17 @@ class ResultsAdapter(val activity: FragmentActivity?) :
         }
 
 
-
     }
 
     fun setUpRanks(items: List<Results>) {
         this.result.addAll(items)
     }
 
-    fun calculate(){
+    fun calculate() {
         val _results = result[1]
         var totalCh = 0
         var totalQp = 0
-        for (i in 1.._results.details.size){
+        for (i in 1.._results.details.size) {
             val _items: TableItems = _results.details[i]
             totalCh = totalCh.plus(_items.cH.toInt())
             totalQp = totalQp.plus(_items.qp.toInt())
@@ -99,10 +125,6 @@ class ResultsAdapter(val activity: FragmentActivity?) :
             holder.expand()
             onItemClickListener?.let { it(item) }
         }
-
-
-
-
 
 
 //        for (i in item.details.size){

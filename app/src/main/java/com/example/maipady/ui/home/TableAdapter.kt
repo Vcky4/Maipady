@@ -19,44 +19,72 @@ class TableAdapter : RecyclerView.Adapter<TableAdapter.RankingViewHolder>() {
             binding.grades.setText(item.grades)
             binding.cH.setText(item.cH)
 
-            when {
-                item.grades.uppercase(Locale.getDefault())  == "A" -> {
-
-                    item.qp = item.cH.toInt().times(5).toString()
-//                    binding.qP.setText(items.cH.toInt().times(5).toString())
-                }
-                item.grades.uppercase(Locale.getDefault())  == "B" -> {
-                    item.qp = item.cH.toInt().times(4).toString()
-                }
-                item.grades.uppercase(Locale.getDefault()) == "C" -> {
-                    item.qp = item.cH.toInt().times(3).toString()
-                }
-                item.grades.uppercase(Locale.getDefault())  == "D" -> {
-                    item.qp = item.cH.toInt().times(2).toString()
-                }
-                item.grades.uppercase(Locale.getDefault())  == "E" -> {
-                    item.qp = item.cH.toInt().times(1).toString()
-                }
-                item.grades.uppercase(Locale.getDefault())  == "F" -> {
-                    item.qp = item.cH.toInt().times(0).toString()
-                }
-            }
+//            when {
+//                item.grades.uppercase(Locale.getDefault())  == "A" -> {
+//
+//                    item.qp = item.cH.toInt().times(5).toString()
+////                    binding.qP.setText(items.cH.toInt().times(5).toString())
+//                }
+//                item.grades.uppercase(Locale.getDefault())  == "B" -> {
+//                    item.qp = item.cH.toInt().times(4).toString()
+//                }
+//                item.grades.uppercase(Locale.getDefault()) == "C" -> {
+//                    item.qp = item.cH.toInt().times(3).toString()
+//                }
+//                item.grades.uppercase(Locale.getDefault())  == "D" -> {
+//                    item.qp = item.cH.toInt().times(2).toString()
+//                }
+//                item.grades.uppercase(Locale.getDefault())  == "E" -> {
+//                    item.qp = item.cH.toInt().times(1).toString()
+//                }
+//                item.grades.uppercase(Locale.getDefault())  == "F" -> {
+//                    item.qp = item.cH.toInt().times(0).toString()
+//                }
+//            }
             binding.qP.setText(item.qp)
         }
 
 
     }
-    fun totalQp(): Int {
-        var total = 0
-        items.forEach {
-            total = total.plus(it.qp.toInt())
-            return@forEach
-        }
-        return total
-    }
+//    fun totalQp(): Int {
+//        var total = 0
+//        items.forEach {
+//            total = total.plus(it.qp.toInt())
+//            return@forEach
+//        }
+//        return total
+//    }
 
-    fun setUpRanks(items: List<TableItems>) {
-        this.items.addAll(items)
+    fun setUpRanks(item: List<TableItems>) {
+        item.forEach {
+            when {
+                it.grades.uppercase(Locale.getDefault())  == "A" -> {
+                    it.qp = it.cH.toInt().times(5).toString()
+                    this.items.add(it)
+//                    binding.qP.setText(items.cH.toInt().times(5).toString())
+                }
+                it.grades.uppercase(Locale.getDefault())  == "B" -> {
+                    it.qp = it.cH.toInt().times(4).toString()
+                    this.items.add(it)
+                }
+                it.grades.uppercase(Locale.getDefault()) == "C" -> {
+                    it.qp = it.cH.toInt().times(3).toString()
+                    this.items.add(it)
+                }
+                it.grades.uppercase(Locale.getDefault())  == "D" -> {
+                    it.qp = it.cH.toInt().times(2).toString()
+                    this.items.add(it)
+                }
+                it.grades.uppercase(Locale.getDefault())  == "E" -> {
+                    it.qp = it.cH.toInt().times(1).toString()
+                    this.items.add(it)
+                }
+                it.grades.uppercase(Locale.getDefault())  == "F" -> {
+                    it.qp = it.cH.toInt().times(0).toString()
+                    this.items.add(it)
+                }
+            }
+        }
     }
 
 
