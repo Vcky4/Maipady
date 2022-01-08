@@ -21,6 +21,7 @@ class ResultsAdapter(val activity: FragmentActivity?) :
     RecyclerView.Adapter<ResultsAdapter.RankingViewHolder>() {
 
     private val result = mutableListOf<Results>()
+    
 
     inner class RankingViewHolder(private val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -33,6 +34,7 @@ class ResultsAdapter(val activity: FragmentActivity?) :
 
             var totalCh = 0
             var totalQp = 0
+            var cgpa = 0
 
 
             items.details.forEach {
@@ -43,7 +45,6 @@ class ResultsAdapter(val activity: FragmentActivity?) :
                     it.grades.uppercase(Locale.getDefault()) == "A" -> {
                         totalQp = totalQp.plus(it.cH.toInt().times(5))
                         binding.qpTotal.text = totalQp.toString()
-//                    binding.qP.setText(items.cH.toInt().times(5).toString())
                     }
                     it.grades.uppercase(Locale.getDefault()) == "B" -> {
                         totalQp = totalQp.plus(it.cH.toInt().times(4))
@@ -66,10 +67,13 @@ class ResultsAdapter(val activity: FragmentActivity?) :
                         binding.qpTotal.text = totalQp.toString()
                     }
                 }
-                items.gpa = totalQp.toFloat().div(totalCh.toFloat()).toBigDecimal().setScale(2,RoundingMode.HALF_EVEN).toString()
+                items.gpa = totalQp.toFloat().div(totalCh.toFloat()).toBigDecimal().setScale(2,RoundingMode.FLOOR).toString()
                 binding.gpaText.text = items.gpa
-            }
 
+                cgpa = cgpa.plus(items.gpa.toInt())
+
+            }
+            cgpaValue(cgpa.toString())
             binding.recy.layoutManager = LinearLayoutManager(activity)
             binding.recy.adapter = adapter
             adapter.setUpRanks(items.details)
@@ -98,15 +102,7 @@ class ResultsAdapter(val activity: FragmentActivity?) :
         this.result.addAll(items)
     }
 
-    fun calculate() {
-        val _results = result[1]
-        var totalCh = 0
-        var totalQp = 0
-        for (i in 1.._results.details.size) {
-            val _items: TableItems = _results.details[i]
-            totalCh = totalCh.plus(_items.cH.toInt())
-            totalQp = totalQp.plus(_items.qp.toInt())
-        }
+    fun cgpaValue(value: String) {
 
     }
 
@@ -128,12 +124,6 @@ class ResultsAdapter(val activity: FragmentActivity?) :
         }
 
 
-//        for (i in item.details.size){
-//            val _items: TableItems = item.details[i]
-//            totalCh = totalCh.plus(_items.cH.toInt())
-////            totalQp = totalQp.plus(_items.qp.toInt())
-//            holder.totalCh.text = totalCh.toString()
-//        }
     }
 
     private var onItemClickListener: ((Results) -> Unit)? = null

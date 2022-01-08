@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    private val _cgpa = MutableLiveData<String>()
+
+    fun setCgpa(cgpa: String){
+        _cgpa.value = cgpa
     }
-    val text: LiveData<String> = _text
+    val cgpa: LiveData<String> = _cgpa
 }
